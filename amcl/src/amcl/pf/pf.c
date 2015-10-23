@@ -520,9 +520,20 @@ void pf_cluster_stats(pf_t *pf, pf_sample_set_t *set)
 
     //printf("%d %f %f %f\n", i, sample->pose.v[0], sample->pose.v[1], sample->pose.v[2]);
 
+
     // Get the cluster label for this sample
     cidx = pf_kdtree_get_cluster(set->kdtree, sample->pose);
+
+    if (cidx == -1)
+    {
+	    // UGLY fix for cidx==-1, I don't understand why we need this LAURENT, TODO: check
+	    printf("cidx == -1 returning.. no update of stat");
+	    return;
+    }
+
+
     assert(cidx >= 0);
+
     if (cidx >= set->cluster_max_count)
       continue;
     if (cidx + 1 > set->cluster_count)

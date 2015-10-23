@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(amcl)
-
+find_package(qibuild)
 find_package(catkin REQUIRED
         COMPONENTS
             roscpp
@@ -12,9 +12,9 @@ find_package(catkin REQUIRED
 find_package(Boost REQUIRED)
 
 # dynamic reconfigure
-generate_dynamic_reconfigure_options(
-    cfg/AMCL.cfg
-)
+#generate_dynamic_reconfigure_options(
+#    cfg/AMCL.cfg
+#)
 
 catkin_package(
     CATKIN_DEPENDS

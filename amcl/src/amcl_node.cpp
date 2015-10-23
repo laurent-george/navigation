@@ -267,6 +267,7 @@ main(int argc, char** argv)
 {
   ros::init(argc, argv, "amcl");
   ros::NodeHandle nh;
+printf("MY AMCL LAURENT\n");
 
   // Override default sigint handler
   signal(SIGINT, sigintHandler);
@@ -1139,7 +1140,9 @@ AmclNode::laserReceived(const sensor_msgs::LaserScanConstPtr& laser_scan)
     if (!resampled)
     {
 	    // re-compute the cluster statistics
+	    printf("force recompute :\n");
 	    pf_cluster_stats(pf_, pf_->sets);
+	    printf("force recompute done:\n");
     }
     // Read out the current hypotheses
     double max_weight = 0.0;
